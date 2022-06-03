@@ -1,0 +1,48 @@
+sample __manifest__.py
+    https://github.com/odoo/odoo/blob/fc92728fb2aa306bf0e01a7f9ae1cfa3c1df0e10/addons/crm/__manifest__.py#L1-L67
+
+to make it appear in apps, we appended to __manifest__.py
+    'application': True
+
+creating table estate_property
+
+ORM layer makes us avoid writing SQL
+
+we create python object, and ORM will translate them to tables
+
+```
+from odoo import models
+
+class TestModel(models.Model):
+    _name = "test.model"
+```
+ORM will generate database table names test_model
+it reads the '.' as '_'
+
+sample entity
+````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+from odoo import fields, models
+
+class RecurringPlan(models.Model):
+    _name = "crm.recurring.plan"
+    _description = "CRM Recurring revenue plans"
+    _order = "sequence"
+
+    name = fields.Char('Plan Name', required=True, translate=True)
+    number_of_months = fields.Integer('# Months', required=True)
+    active = fields.Boolean('Active', default=True)                                                              |
+    sequence = fields.Integer('Sequence', default=10)                                                            |
+                                                                                                                 |
+    _sql_constraints = [                                                                                         |
+        ('check_number_of_months', 'CHECK(number_of_months >= 0)', 'The number of month can\'t be negative.'),   |
+    ]                                                                                                            |
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+this is going in the module_name/models/crm_recurring_plan.py file
+then it's imported in the module_name/models/__init__.py file
+and the folder models is imported in module_name/__init__.py
+
+don't forget to upgrade your module when editing in the table.
+
+test table:
+    psql -d demo15
+    SELECT COUNT(*) FROM estate_property;
