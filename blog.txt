@@ -46,3 +46,9 @@ don't forget to upgrade your module when editing in the table.
 test table:
     psql -d demo15
     SELECT COUNT(*) FROM estate_property;
+
+a file importing data is located in the module_name/data folder
+when the data is related to security, it's located in the module_name/security folder
+when data is related to view and actions, it's located in the module_name/views folder
+
+all of these files should be declared in 'data' list in __manifest__.py file
