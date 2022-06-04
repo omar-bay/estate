@@ -52,3 +52,8 @@ when the data is related to security, it's located in the module_name/security f
 when data is related to view and actions, it's located in the module_name/views folder
 
 all of these files should be declared in 'data' list in __manifest__.py file
+
+now we do some UI
+link a menu to estate.property table so we can create new records.
+
+when you do a view, add it to __manifest__.py
