@@ -23,3 +23,10 @@ class EstateProperty(models.Model):
         # help="Where is the garden placed."
     )
     active = fields.Boolean(default=False)
+    state = fields.Selection(
+        string="state",
+        selection=[('new', 'New'), ('offer recieved', 'Offer Recieved'), ('offer accepted', 'Offer Accepted'), ('sold', 'Sold'), ('canceled', 'Canceled')],
+        required=True,
+        copy=False,
+        default='new'
+    )

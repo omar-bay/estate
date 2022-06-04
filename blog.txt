@@ -61,3 +61,9 @@ when you do a view, add it to __manifest__.py
 the menus inside the module are called action menus
 
 the selling price should be read-only and the number of bedrooms and the availability date should have default values.
+
+the selection values are in small case
+
+next step is to define our own views
+
+make the tree in the main views. the estate_property_views.xml
