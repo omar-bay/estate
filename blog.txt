@@ -57,3 +57,5 @@ now we do some UI
 link a menu to estate.property table so we can create new records.
 
 when you do a view, add it to __manifest__.py
+
+the menus inside the module are called action menus
