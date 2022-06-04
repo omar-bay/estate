@@ -67,3 +67,6 @@ the selection values are in small case
 next step is to define our own views
 
 make the tree in the main views. the estate_property_views.xml
+
+the <group/> seems to put wrap data with value
+the <field name="attribute"/> gets the data value
