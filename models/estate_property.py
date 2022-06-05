@@ -34,9 +34,13 @@ class EstateProperty(models.Model):
     buyer = fields.Many2one("res.partner", copy=False)
     tag_ids = fields.Many2many("estate.property.tag")
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
-    total_area = fields.Float(compute="_compute_total_area")
+    total_area = fields.Float(compute="_compute_total_area", inverse="_inverse_total_area")
 
     @api.depends('living_area', 'garden_area')
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.living_area + record.garden_area
+
+    def _inverse_total_area(self):
+        for record in self:
+            record.garden_area = record.total_area - record.living_area
