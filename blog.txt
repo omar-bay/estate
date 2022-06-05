@@ -103,3 +103,5 @@ for tax in my_test_object.tax_ids:
     print(tax.name)
 
 to make a One2many, you need to have a Many2one there
+
+the object self is a recordset

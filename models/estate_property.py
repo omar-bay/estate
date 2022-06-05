@@ -1,5 +1,5 @@
 from email.policy import default
-from odoo import fields, models
+from odoo import fields, models, api
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -20,7 +20,6 @@ class EstateProperty(models.Model):
     garden_orientation = fields.Selection(
         string="orientation",
         selection=[('north', 'North'), ('south', 'South'), ('east', 'East'), ('west', 'West')]
-        # help="Where is the garden placed."
     )
     active = fields.Boolean(default=False)
     state = fields.Selection(
@@ -35,3 +34,9 @@ class EstateProperty(models.Model):
     buyer = fields.Many2one("res.partner", copy=False)
     tag_ids = fields.Many2many("estate.property.tag")
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
+    total_area = fields.Float(compute="_compute_total_area")
+
+    @api.depends('living_area', 'garden_area')
+    def _compute_total_area(self):
+        for record in self:
+            record.total_area = record.living_area + record.garden_area
