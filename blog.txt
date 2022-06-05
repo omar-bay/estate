@@ -77,3 +77,5 @@ then we can
 print(my_test_object.partner_id.name)
 
 add security to each model
+
+the action attribute in menuitem looks like model name but with _action

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Real EState menu -->
+    <!-- Real EState Module menu -->
     <menuitem id="estate_menu_root" name="Real Estate">
-        <menuitem id="estate_first_level_menu" name="First_level">
+        <!-- To Properties menu item -->
+        <menuitem id="estate_first_level_menu" name="Main">
             <menuitem id="estate_property_menu_action" action="estate_property_action"/>
         </menuitem>
-    </menuitem>
 
-    <!-- Types Item Settings menu (references estate_property_type_views.xml) -->
-    <menuitem id="estate_type_menu_root" name="Estate Types">
+        <!-- To Types menu item (references estate_property_type_views.xml) -->
         <menuitem id="estate_type_first_level_menu" name="Settings">
             <menuitem id="estate_property_type_menu_action" action="estate_property_type_action"/>
         </menuitem>
