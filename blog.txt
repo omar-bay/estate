@@ -79,3 +79,10 @@ print(my_test_object.partner_id.name)
 add security to each model
 
 the action attribute in menuitem looks like model name but with _action
+
+the salesperson must be an employee (odoo user)
+res.partner: a partner is a physical or legal entity. It can be a company, an individual or even a contact address.
+res.users: the users of the system. Users can be ‘internal’, i.e. they have access to the Odoo backend. Or they can be ‘portal’, i.e. they cannot access the backend, only the frontend
+
+user_id = fields.Many2one('res.users', string='Salesperson', index=True, tracking=True, default=lambda self: self.env.user)
+user_email = fields.Char('User Email', related='user_id.email', readonly=True)
