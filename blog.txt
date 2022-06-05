@@ -70,3 +70,10 @@ make the tree in the main views. the estate_property_views.xml
 
 the <group/> seems to put wrap data with value
 the <field name="attribute"/> gets the data value
+
+define a link to res.partner
+partner_id = fields.Many2one("res.partner", string="Partner")
+then we can
+print(my_test_object.partner_id.name)
+
+add security to each model
