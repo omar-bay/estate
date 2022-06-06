@@ -49,6 +49,9 @@
                         <group>
                             <field name="selling_price"/>
                         </group>
+                        <group>
+                            <field name="best_price"/>
+                        </group>
                         <notebook>
                             <page string="Description">
                                 <group>
