@@ -32,3 +32,10 @@ class EstatePropertyOffer(models.Model):
             date_difference = d2 - d1
             record.validity = float(str(date_difference.days))
 
+    def action_accept(self):
+        self.status = 'accepted'
+        return True
+
+    def action_refuse(self):
+        self.status = 'refused'
+        return True
