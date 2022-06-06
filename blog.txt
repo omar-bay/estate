@@ -105,3 +105,8 @@ for tax in my_test_object.tax_ids:
 to make a One2many, you need to have a Many2one there
 
 the object self is a recordset
+
+computed fields are not in the database
+there's a store=True param
+
+when something is triggred in the form view, self will be a single record
