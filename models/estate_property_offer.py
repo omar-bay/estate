@@ -25,8 +25,8 @@ class EstatePropertyOffer(models.Model):
     def _inverse_date_deadline(self):
         for record in self:
             fmt = '%Y-%m-%d'
-            start_date = record.date_deadline
-            end_date = record.create_date
+            start_date = record.create_date
+            end_date = record.date_deadline
             d1 = datetime.datetime.strptime(str(start_date)[:10], fmt)
             d2 = datetime.datetime.strptime(str(end_date)[:10], fmt)
             date_difference = d2 - d1
