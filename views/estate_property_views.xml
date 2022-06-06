@@ -38,6 +38,9 @@
                     <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
+                            <field name="property_type_id"/>
+                        </group>
+                        <group>
                             <field name="postcode"/>
                         </group>
                         <group>
