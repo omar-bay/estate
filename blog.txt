@@ -110,3 +110,6 @@ computed fields are not in the database
 there's a store=True param
 
 when something is triggred in the form view, self will be a single record
+
+By assigning type="object" to our button, the Odoo framework will execute a Python method with name="action_do_something" on the given model.
+action method should always return something

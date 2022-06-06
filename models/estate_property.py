@@ -1,4 +1,5 @@
 from email.policy import default
+import odoo.exceptions
 from odoo import fields, models, api
 
 class EstateProperty(models.Model):
@@ -63,3 +64,17 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = None
+
+    def action_do_cancel(self):
+        if self.state != "sold":
+            self.state = 'canceled'
+        else:
+            raise odoo.exceptions.UserError('Sold Properties cannot be Canceled!')
+        return True
+
+    def action_do_sold(self):
+        if self.state != "canceled":
+            self.state = 'sold'
+        else:
+            raise odoo.exceptions.UserError('Canceled Properties cannot be Sold!')
+        return True
