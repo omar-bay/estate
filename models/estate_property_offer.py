@@ -34,6 +34,8 @@ class EstatePropertyOffer(models.Model):
 
     def action_accept(self):
         self.status = 'accepted'
+        self.property_id.buyer = self.partner_id
+        self.property_id.selling_price = self.price
         return True
 
     def action_refuse(self):
