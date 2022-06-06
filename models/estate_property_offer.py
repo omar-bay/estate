@@ -1,4 +1,5 @@
 import datetime
+import odoo.exceptions
 from odoo import fields, models, api
 
 class EstatePropertyOffer(models.Model):
@@ -19,8 +20,12 @@ class EstatePropertyOffer(models.Model):
     @api.depends('create_date', 'validity')
     def _compute_date_deadline(self):
         for record in self:
-            interval = datetime.timedelta(seconds=(self.validity * 3600))
-            record.date_deadline = fields.Datetime.to_string(record.create_date + interval)
+            if record.create_date != False:
+                interval = datetime.timedelta(seconds=(record.validity * 3600))
+                record.date_deadline = fields.Datetime.to_string(record.create_date + interval)
+            # d = datetime.datetime.strptime(str(record.create_date)[:10], '%Y-%m-%d')
+            # delta = datetime.timedelta(days=record.validity)
+            # record.date_deadline = d+delta
 
     def _inverse_date_deadline(self):
         for record in self:
@@ -33,11 +38,18 @@ class EstatePropertyOffer(models.Model):
             record.validity = float(str(date_difference.days))
 
     def action_accept(self):
-        self.status = 'accepted'
-        self.property_id.buyer = self.partner_id
-        self.property_id.selling_price = self.price
+        if self.property_id.state != 'sold':
+            self.status = 'accepted'
+            self.property_id.buyer = self.partner_id
+            self.property_id.selling_price = self.price
+            self.property_id.state = 'sold'
+        else:
+            raise odoo.exceptions.UserError('Property already sold!')
         return True
 
     def action_refuse(self):
-        self.status = 'refused'
+        if self.status != 'accepted':
+            self.status = 'refused'
+        else:
+            raise odoo.exceptions.UserError('Cannot refuse an accepted deal!')
         return True
