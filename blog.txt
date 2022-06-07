@@ -157,3 +157,6 @@ to prevent adding new offer, we did readonly under condition
 
 to make list/tree edit without opening form:
 editable='top' or editable='bottom'
+
+we can't use decoration in view without the field existing in tree
+i'm inserting the field but setting invisible="1"
