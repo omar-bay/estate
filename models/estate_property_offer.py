@@ -6,6 +6,7 @@ from odoo import fields, models, api
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "selling offers given to a property"
+    _order = "price desc"
 
     price = fields.Float()
     status = fields.Selection(

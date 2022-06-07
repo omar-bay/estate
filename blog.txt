@@ -127,3 +127,7 @@ we do this for a fields.Selection type
 <field name="state" widget="statusbar" statusbar_visible="new,offer recieved,offer accepted,sold"/>
 
 same fields multiple times are not supported
+
+default list order can be defined directly in the model as
+_order = "id desc"
+descending id
