@@ -178,3 +178,12 @@ def _compute_description(self):
 
 estate_property_offer doesn't have a direct relation with estate_property_type, we we do a relation through estate_property:
 property_type_id = fields.Many2one('estate.property.type', related="property_id.property_type_id", store=True, string="Property Type")
+
+we need to display the list of properties linked to a salesperson in Settings/Users&Companies/Users form view.
+to do this, we need to add a field to res.users. but we inherit
+---
+from odoo import fields, models
+class InheritedModel(models.Model):
+    _inherit = "inherited.model"
+    new_field = fields.Char(string="New Field")
+---

@@ -52,6 +52,18 @@ class EstatePropertyOffer(models.Model):
             date_difference = d2 - d1
             record.validity = float(str(date_difference.days))
 
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get("property_id") and vals.get("price"):
+    #         prop = self.env["estate.property"].browse(vals["property_id"])
+    #         # We check if the offer is higher than the existing offers
+    #         if prop.offer_ids:
+    #             max_offer = max(prop.mapped("offer_ids.price"))
+    #             if float_compare(vals["price"], max_offer, precision_rounding=0.01) <= 0:
+    #                 raise UserError("The offer must be higher than %.2f" % max_offer)
+    #         prop.state = "offer_received"
+    #     return super().create(vals)
+
     def action_accept(self):
         if self.property_id.state != 'sold':
             self.status = 'accepted'
