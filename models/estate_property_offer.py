@@ -1,3 +1,4 @@
+from odoo.exceptions import ValidationError
 import datetime
 import odoo.exceptions
 from odoo import fields, models, api
@@ -21,6 +22,12 @@ class EstatePropertyOffer(models.Model):
         ('positive_price', 'CHECK (price > 0)',
         'price should be positive.')
     ]
+
+    @api.constrains('price')
+    def _check_price(self):
+        for record in self:
+            if record.price < record.property_id.expected_price:
+                raise ValidationError("Bidding price cannot be less than Expected price!")
 
     @api.depends('create_date', 'validity')
     def _compute_date_deadline(self):

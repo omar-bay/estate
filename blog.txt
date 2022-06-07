@@ -116,3 +116,6 @@ action method should always return something
 
 buttons can be linked to actions
 <button type="action" name="%(test.test_model_action)d" string="My Action"/>
+
+about the python constraints for the selling price not to be lower than 90% of expected price,
+i'll use it in offer
