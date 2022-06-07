@@ -34,6 +34,7 @@
                 <header>
                     <button name="action_do_cancel" type="object" string="Cancel"/>
                     <button name="action_do_sold" type="object" string="Sold"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,offer recieved,offer accepted,sold"/>
                 </header>
                 <sheet>
                     <h1>
@@ -41,9 +42,6 @@
                     </h1>
                     <field name="tag_ids" widget="many2many_tags"/>
                     <group>
-                        <group>
-                            <field string="Status" name="state"/>
-                        </group>
                         <group>
                             <field name="property_type_id"/>
                         </group>
