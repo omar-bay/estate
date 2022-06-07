@@ -163,3 +163,18 @@ i'm inserting the field but setting invisible="1"
 
 decoration trees and stuff
 https://www.iwesabe.com/blog/how-to-add-colors-to-tree-view-in-odoo
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+partner_id = fields.Many2one("res.partner", string="Partner")
+description = fields.Char(related="partner_id.name")
+~~ equivalent to ~~
+partner_id = fields.Many2one("res.partner", string="Partner")
+description = fields.Char(compute="_compute_description")
+@api.depends("partner_id.name")
+def _compute_description(self):
+    for record in self:
+        record.description = record.partner_id.name
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+estate_property_offer doesn't have a direct relation with estate_property_type, we we do a relation through estate_property:
+property_type_id = fields.Many2one('estate.property.type', related="property_id.property_type_id", store=True, string="Property Type")

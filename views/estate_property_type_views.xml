@@ -14,6 +14,11 @@
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
             <form>
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" type="object" name="action_view_offers" icon="fa-usd">
+                        <field string="Offer" name="offer_count" widget="statinfo"/>
+                    </button>
+                </div>
                 <field name="property_ids">
                     <tree>
                         <field name="name"/>
