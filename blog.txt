@@ -152,3 +152,5 @@ other way to alter visibility
     <field name="description" attrs="{'invisible': [('is_partner', '=', False)]}"/>
     <field name="is_partner" invisible="1"/>
 </form>
+
+to prevent adding new offer, we did readonly under condition

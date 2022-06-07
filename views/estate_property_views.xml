@@ -40,8 +40,7 @@
                     <h1>
                         <field name="name"/>
                     </h1>
-                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}">
-                    </field>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <group>
                         <group>
                             <field name="property_type_id" attrs="{'readonly': [('id', '!=', False)]}"/>
@@ -93,7 +92,7 @@
                             </page>
                             <page string="Offers">
                                 <field name="offer_ids" attrs="{'readonly':['|',('state','=','sold'),('state','=','canceled')]}">
-                                    <tree string="Estate Offer">
+                                    <tree string="Estate Offer" editable="top">
                                         <field name="price"/>
                                         <field name="partner_id"/>
                                         <button name="action_accept" type="object" icon="fa-check" attrs="{'invisible': ['|', ('parent.state', '=', 'sold'), ('parent.state', '=', 'canceled')]}"/>
