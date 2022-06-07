@@ -92,12 +92,12 @@
                                 </group>
                             </page>
                             <page string="Offers">
-                                <field name="offer_ids">
+                                <field name="offer_ids" attrs="{'readonly':['|',('state','=','sold'),('state','=','canceled')]}">
                                     <tree string="Estate Offer">
                                         <field name="price"/>
                                         <field name="partner_id"/>
-                                        <button name="action_accept" type="object" icon="fa-check" attrs="{'invisible': [('parent.state', '=', 'sold')]}"/>
-                                        <button name="action_refuse" type="object" icon="fa-times" attrs="{'invisible': [('parent.state', '=', 'sold')]}"/>
+                                        <button name="action_accept" type="object" icon="fa-check" attrs="{'invisible': ['|', ('parent.state', '=', 'sold'), ('parent.state', '=', 'canceled')]}"/>
+                                        <button name="action_refuse" type="object" icon="fa-times" attrs="{'invisible': ['|', ('parent.state', '=', 'sold'), ('parent.state', '=', 'canceled')]}"/>
                                         <field name="status"/>
                                     </tree>
                                 </field>
