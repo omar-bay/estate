@@ -131,3 +131,12 @@ same fields multiple times are not supported
 default list order can be defined directly in the model as
 _order = "id desc"
 descending id
+
+ordering can also be on the view level:
+<tree default_order="date desc">
+    <field name="date"/>
+    ...
+
+in estate.property.type we have a field sequence to allow manual sort
+
+in the widget fields we can all the options attribute to make some customizations
