@@ -66,6 +66,11 @@ class EstateProperty(models.Model):
                     max = offer.price
             record.best_price = max
 
+    @api.onchange('offer_ids')
+    def _onchange_offer_ids(self):
+        if self.state == 'new' and len(self.offer_ids) > 0:
+            self.state = 'offer recieved'
+
     @api.onchange("garden")
     def _onchange_garden(self):
         if self.garden:
