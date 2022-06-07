@@ -154,3 +154,6 @@ other way to alter visibility
 </form>
 
 to prevent adding new offer, we did readonly under condition
+
+to make list/tree edit without opening form:
+editable='top' or editable='bottom'

@@ -13,7 +13,7 @@
         <field name="name">estate.property.tree</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <tree string="Estate">
+            <tree string="Estate" decoration-success="len(offer_ids)>0">
                 <field name="name"/>
                 <field name="postcode"/>
                 <field name="bedrooms"/>
@@ -21,6 +21,7 @@
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability"/>
+                <field name="offer_ids" invisible="1"/>
             </tree>
         </field>
     </record>
@@ -51,7 +52,7 @@
                         <group>
                             <field name="expected_price"/>
                         </group>
-                        <group>
+                        <group optional="hidden">
                             <field string="Available From" name="date_availability"/>
                         </group>
                         <group>
