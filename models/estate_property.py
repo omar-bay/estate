@@ -1,5 +1,6 @@
 from email.policy import default
 import odoo.exceptions
+from odoo.exceptions import UserError
 from odoo import fields, models, api
 
 class EstateProperty(models.Model):
@@ -79,6 +80,12 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = None
+
+    # @api.model
+    def unlink(self):
+        if not set(self.mapped("state")) <= {"new", "canceled"}:
+            raise UserError("Only new and canceled properties can be deleted.")
+        return super().unlink()
 
     def action_do_cancel(self):
         if self.state != "sold":
