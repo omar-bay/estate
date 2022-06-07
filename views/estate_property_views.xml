@@ -81,13 +81,13 @@
                                 <group>
                                     <field name="garden"/>
                                 </group>
-                                <group>
+                                <group attrs="{'invisible': [('garden', '=', False)]}">
                                     <field string="Garden Area (sqm)" name="garden_area"/>
                                 </group>
                                 <group>
                                     <field string="Total Area" name="total_area"/>
                                 </group>
-                                <group>
+                                <group attrs="{'invisible': [('garden', '=', False)]}">
                                     <field name="garden_orientation"/>
                                 </group>
                             </page>

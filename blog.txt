@@ -143,3 +143,12 @@ in the widget fields we can all the options attribute to make some customization
 
 a color picker widget
 <field name="color" widget="color_picker"/>
+
+state selection is a preserved field in odoo just like active. 
+we use its functionality in states= in view
+
+other way to alter visibility
+<form>
+    <field name="description" attrs="{'invisible': [('is_partner', '=', False)]}"/>
+    <field name="is_partner" invisible="1"/>
+</form>
