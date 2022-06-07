@@ -94,7 +94,7 @@
                             </page>
                             <page string="Offers">
                                 <field name="offer_ids" attrs="{'readonly':['|',('state','=','sold'),('state','=','canceled')]}">
-                                    <tree string="Estate Offer" editable="top">
+                                    <tree string="Estate Offer" editable="top" decoration-danger="status=='refused'" decoration-success="status=='accepted'">
                                         <field name="price"/>
                                         <field name="partner_id"/>
                                         <button name="action_accept" type="object" icon="fa-check" attrs="{'invisible': ['|', ('parent.state', '=', 'sold'), ('parent.state', '=', 'canceled')]}"/>

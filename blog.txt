@@ -160,3 +160,6 @@ editable='top' or editable='bottom'
 
 we can't use decoration in view without the field existing in tree
 i'm inserting the field but setting invisible="1"
+
+decoration trees and stuff
+https://www.iwesabe.com/blog/how-to-add-colors-to-tree-view-in-odoo
