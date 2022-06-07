@@ -15,6 +15,7 @@ class EstatePropertyOffer(models.Model):
         copy=False
     )
     partner_id = fields.Many2one('res.partner', required=True)
+    partner_name = fields.Char(related="partner_id.name")
     property_id = fields.Many2one('estate.property', required=True)
     property_type_id = fields.Many2one('estate.property.type', related="property_id.property_type_id", store=True, string="Property Type")
     validity = fields.Integer(default=7)

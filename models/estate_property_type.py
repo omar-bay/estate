@@ -20,6 +20,3 @@ class EstatePropertyType(models.Model):
         ('unique_name', 'UNIQUE (name)',
         'type name should be unique.')
     ]
-
-    def action_view_offers(self):
-        return
