@@ -140,3 +140,6 @@ ordering can also be on the view level:
 in estate.property.type we have a field sequence to allow manual sort
 
 in the widget fields we can all the options attribute to make some customizations
+
+a color picker widget
+<field name="color" widget="color_picker"/>
