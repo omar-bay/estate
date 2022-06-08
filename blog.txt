@@ -187,3 +187,6 @@ class InheritedModel(models.Model):
     _inherit = "inherited.model"
     new_field = fields.Char(string="New Field")
 ---
+
+create a new module for linking modules
+auto_install: True in manifest there

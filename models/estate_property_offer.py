@@ -65,11 +65,11 @@ class EstatePropertyOffer(models.Model):
     #     return super().create(vals)
 
     def action_accept(self):
-        if self.property_id.state != 'sold':
+        if self.property_id.state != 'sold' or self.property_id.state != 'offer accepted':
             self.status = 'accepted'
             self.property_id.buyer = self.partner_id
             self.property_id.selling_price = self.price
-            self.property_id.state = 'sold'
+            self.property_id.state = 'offer accepted'
         else:
             raise odoo.exceptions.UserError('Property already sold!')
         return True

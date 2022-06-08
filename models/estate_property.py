@@ -96,8 +96,11 @@ class EstateProperty(models.Model):
         return True
 
     def action_do_sold(self):
-        if self.state != "canceled":
-            self.state = 'sold'
-        else:
-            raise odoo.exceptions.UserError('Canceled Properties cannot be Sold!')
-        return True
+        # if self.state != "canceled":
+        #     self.state = 'sold'
+        # else:
+        #     raise odoo.exceptions.UserError('Canceled Properties cannot be Sold!')
+        # return True
+        if "canceled" in self.mapped("state"):
+            raise UserError("Canceled properties cannot be sold.")
+        return self.write({"state": "sold"})
