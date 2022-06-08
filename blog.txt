@@ -190,3 +190,21 @@ class InheritedModel(models.Model):
 
 create a new module for linking modules
 auto_install: True in manifest there
+
+<kanban>
+    <field name="state"/>
+    <templates>
+        <t t-name="kanban-box">
+            <div class="oe_kanban_global_click">
+                <field name="name"/>
+            </div>
+            <div t-if="record.state.raw_value == 'new'">
+                This is new!
+            </div>
+        </t>
+    </templates>
+</kanban>
+t-if: the <div> element is rendered if the condition is true.
+record: an object with all the requested fields as its attributes. 
+
+kanban error dict.record.state is undefined, so i added the field at the top
